@@ -1,0 +1,376 @@
+<!doctype html> 
+<html lang="hi"> 
+<head> 
+  <meta charset="utf-8" /> 
+  <meta name="viewport" content="width=device-width,initial-scale=1" /> 
+  <title>Portfolio — Shivansh Namdev</title> 
+  <meta name="description" content="Simple responsive portfolio template with 
+HTML, CSS and JavaScript (medium complexity)" /> 
+  <style> 
+    :root{ 
+      --bg: #0f1724; 
+      --card: #0b1220; 
+      --muted: #94a3b8; 
+      --accent: #06b6d4; 
+      --glass: rgba(255,255,255,0.03); 
+      --radius: 14px; 
+      --maxw: 1100px; 
+      --ff: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; 
+    } 
+    [data-theme="light"]{ 
+      --bg: #f8fafc; 
+      --card: #ffffff; 
+      --muted: #52606d; 
+      --accent: #0284c7; 
+      --glass: rgba(15,23,42,0.04); 
+    } 
+    *{box-sizing:border-box} 
+    html,body{height:100%} 
+    body{ 
+      margin:0;padding:0; 
+      font-family:var(--ff); 
+      background:linear-gradient(180deg,var(--bg),#071027 140%); 
+      color: #e6eef6; 
+      -webkit-font-smoothing:antialiased; 
+      -moz-osx-font-smoothing:grayscale; 
+      line-height:1.45; 
+    } 
+    .wrap{max-width:var(--maxw);margin:36px auto;padding:28px} 
+ 
+    header{ 
+      display:flex;align-items:center;justify-content:space-between;gap:16px;margin
+bottom:22px 
+    } 
+    .brand{display:flex;align-items:center;gap:12px} 
+    .logo{width:56px;height:56px;border-radius:12px;background:linear
+gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify
+content:center;font-weight:700} 
+    .brand h1{font-size:18px;margin:0} 
+    nav{display:flex;gap:12px} 
+    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border
+radius:10px} 
+    nav a:hover{background:var(--glass);color:var(--accent)} 
+ 
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:30px;align
+items:center;margin-bottom:28px} 
+    .card{background:var(--card);padding:22px;border-radius:var(--radius);box
+shadow:0 6px 30px rgba(2,6,23,0.6);} 
+    .intro h2{margin:0 0 8px 0;font-size:28px} 
+    .intro p{color:var(--muted);margin:0 0 18px} 
+    .cta{display:flex;gap:10px} 
+    .btn{background:linear-gradient(90deg,var(-
+accent),#7c3aed);border:none;color:#021024;padding:10px 14px;border
+radius:10px;cursor:pointer;font-weight:600} 
+    .ghost{background:transparent;border:1px solid 
+rgba(255,255,255,0.06);color:var(--muted);padding:10px 14px;border
+radius:10px;cursor:pointer} 
+ 
+    .profile{display:flex;flex-direction:column;align-items:center;gap:12px;text
+align:center} 
+    .avatar{width:120px;height:120px;border
+radius:18px;overflow:hidden;display:block;background:linear-gradient(180deg,#123, 
+#456)} 
+    .small{font-size:13px;color:var(--muted)} 
+ 
+    section{margin-bottom:26px} 
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px} 
+    .project{padding:14px;border-radius:12px;background:linear
+gradient(180deg,rgba(255,255,255,0.02),transparent);min
+height:120px;display:flex;flex-direction:column;justify-content:space-between} 
+    .tags{display:flex;gap:8px;flex-wrap:wrap} 
+    .tag{font-size:12px;padding:6px 8px;border
+radius:8px;background:rgba(255,255,255,0.02);color:var(--muted)} 
+ 
+    footer{display:flex;justify-content:space-between;align-items:center;color:var(-
+muted);font-size:13px;padding-top:10px} 
+ 
+    /* responsive */ 
+    @media (max-width:980px){ 
+      .hero{grid-template-columns:1fr} 
+      .grid{grid-template-columns:repeat(2,1fr)} 
+    } 
+    @media (max-width:640px){ 
+      .wrap{padding:16px;margin:18px} 
+      nav{display:none} 
+      .grid{grid-template-columns:1fr} 
+    } 
+ 
+    /* contact form */ 
+    form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px} 
+    form input, form textarea{width:100%;padding:10px;border-radius:10px;border:1px 
+solid rgba(255,255,255,0.04);background:transparent;color:inherit} 
+    form textarea{min-height:120px} 
+    .muted{color:var(--muted);font-size:13px} 
+ 
+    /* subtle helpers */ 
+    .center{display:flex;align-items:center;justify-content:center} 
+    .shadow-soft{box-shadow:0 6px 22px rgba(2,6,23,0.45)} 
+  </style> 
+</head> 
+<body> 
+  <div class="wrap"> 
+    <header> 
+      <div class="brand"> 
+        <div class="logo">JS</div> 
+        <div> 
+          <h1>Shivansh Namdev</h1> 
+          <div class="small">B.Tech CSIT Student • KIET Ghaziabad</div> 
+        </div> 
+      </div> 
+ 
+      <nav> 
+        <a href="#about">About</a> 
+        <a href="#projects">Projects</a> 
+        <a href="#skills">Skills</a> 
+        <a href="#contact">Contact</a> 
+      </nav> 
+ 
+      <div style="display:flex;gap:10px;align-items:center"> 
+        <button id="themeToggle" class="ghost" title="Toggle theme">Toggle</button> 
+        <button id="downloadBtn" class="btn">Download CV</button> 
+      </div> 
+    </header> 
+ 
+    <main> 
+      <section class="hero"> 
+        <div class="card intro"> 
+          <h2>Hi I Shivansh Namdev — B.Tech CSIT student</h2> 
+          <p>I usually makes Website, Web apps aur UI components with simple and 
+accessible design and products which makes users happy.</p> 
+          <div class="cta"> 
+            <button class="btn" 
+onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Hi
+ re me</button> 
+            <button class="ghost" 
+onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">P
+ rojects</button> 
+          </div> 
+ 
+          <div style="margin-top:18px"> 
+            <div class="muted">Quick facts</div> 
+            <div style="display:flex;gap:12px;margin-top:8px"> 
+              <div class="tag">React</div> 
+              <div class="tag">HTML/CSS</div> 
+              <div class="tag">Vanilla JS</div> 
+            </div> 
+          </div> 
+        </div> 
+ 
+        <aside class="card profile"> 
+          <div class="avatar center shadow-soft"> 
+            <!-- Replace with your image --> 
+            <svg width="120" height="120" viewBox="0 0 24 24" fill="none" 
+xmlns="http://www.w3.org/2000/svg"> 
+              <rect width="24" height="24" rx="4" fill="url(#g)"/> 
+              <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop
+color="#06b6d4"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs> 
+            </svg> 
+          </div> 
+          <div style="font-weight:700">Shivansh Namdev</div> 
+          <div class="small">B.Tech CSIT • KIET Ghaziabad</div> 
+          <div style="display:flex;gap:8px;margin-top:6px"> 
+            <a class="ghost" href="#contact">Message</a> 
+            <a class="ghost" href="#projects">Portfolio</a> 
+          </div> 
+        </aside> 
+      </section> 
+ 
+      <section id="about"> 
+        <div class="card"> 
+          <h3>About</h3> 
+          <p class="muted">Main ek CSIT student hoon jo web development seekh 
+raha hoon. College projects aur freelance ka  experience hai. Yahan kuch cheezein 
+jo main karta hoon:</p> 
+          <ul> 
+            <li>Responsive websites</li> 
+            <li>Single Page Applications</li> 
+            <li>Design to code workflows</li> 
+          </ul> 
+        </div> 
+      </section> 
+ 
+      <section id="projects"> 
+        <div style="display:flex;justify-content:space-between;align
+items:center;margin-bottom:12px"> 
+          <h3>Projects</h3> 
+          <div class="muted">Filter: <span id="filterApplied">All</span></div> 
+        </div> 
+ 
+        <div class="grid" id="projectsGrid"> 
+          <!-- Project items (replace content) --> 
+          <article class="project"> 
+            <div> 
+              <strong>College Canteen App</strong> 
+              <p class="muted">A lightweight PWA to reduce food waste and manage 
+orders in college canteen.</p> 
+            </div> 
+            <div style="display:flex;justify-content:space-between;align
+items:center;margin-top:12px"> 
+              <div class="tags"><span class="tag">PWA</span><span 
+class="tag">Vanilla JS</span></div> 
+              <button class="ghost" 
+onclick="openDemo('https://example.com')">Demo</button> 
+            </div> 
+          </article> 
+ 
+          <article class="project"> 
+            <div> 
+              <strong>Portfolio Builder</strong> 
+              <p class="muted">A simple drag & drop portfolio generator for creators.</p> 
+            </div> 
+            <div style="display:flex;justify-content:space-between;align
+items:center;margin-top:12px"> 
+              <div class="tags"><span class="tag">React</span><span 
+class="tag">Node</span></div> 
+              <button class="ghost" 
+onclick="openDemo('https://example.com')">Demo</button> 
+            </div> 
+          </article> 
+ 
+          <article class="project"> 
+            <div> 
+              <strong>Fitness Tracker</strong> 
+              <p class="muted">Micro-interactions and charts for tracking workouts and 
+diet.</p> 
+            </div> 
+            <div style="display:flex;justify-content:space-between;align
+items:center;margin-top:12px"> 
+              <div class="tags"><span class="tag">ChartJS</span><span 
+class="tag">HTML</span></div> 
+              <button class="ghost" 
+onclick="openDemo('https://example.com')">Demo</button> 
+            </div> 
+          </article> 
+        </div> 
+      </section> 
+ 
+      <section id="skills"> 
+        <div class="card"> 
+          <h3>Skills</h3> 
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px"> 
+            <span class="tag">HTML</span> 
+            <span class="tag">CSS</span> 
+            <span class="tag">JavaScript</span> 
+            <span class="tag">React</span> 
+            <span class="tag">Accessibility</span> 
+            <span class="tag">Performance</span> 
+          </div> 
+        </div> 
+      </section> 
+ 
+      <section id="contact"> 
+        <div class="card"> 
+          <h3>Contact</h3> 
+          <p class="muted">Form se message bhejo ya seedha email: 
+<strong>tumhara@email.com</strong></p> 
+ 
+          <form id="contactForm"> 
+            <div class="row"> 
+              <input id="name" placeholder="Naam" required /> 
+              <input id="email" type="email" placeholder="Email" required /> 
+            </div> 
+            <div style="margin-top:12px"> 
+              <textarea id="message" placeholder="Message" required></textarea> 
+            </div> 
+            <div style="margin-top:12px;display:flex;gap:8px"> 
+              <button type="submit" class="btn">Send</button> 
+              <button type="button" class="ghost" onclick="resetForm()">Reset</button> 
+            </div> 
+            <p id="formMsg" class="muted" style="margin-top:10px"></p> 
+          </form> 
+        </div> 
+      </section> 
+ 
+    </main> 
+ 
+    <footer> 
+      <div>© <span id="year"></span> Shivansh Namdev</div> 
+      <div class="muted">Built with HTML • CSS • JavaScript</div> 
+    </footer> 
+  </div> 
+ 
+  <script> 
+    // small interactive JS (theme, form validation, CV download stub) 
+    (function(){ 
+      const root = document.documentElement; 
+      const stored = localStorage.getItem('theme'); 
+      if(stored) document.documentElement.setAttribute('data-theme', stored); 
+      document.getElementById('themeToggle').addEventListener('click', ()=>{ 
+        const cur = document.documentElement.getAttribute('data-theme'); 
+        const next = cur === 'light' ? '' : 'light'; 
+        if(next) document.documentElement.setAttribute('data-theme', next); else 
+document.documentElement.removeAttribute('data-theme'); 
+        localStorage.setItem('theme', next); 
+      }); 
+ 
+      // form handling (no server) -> demonstrates client-side validation + fake send 
+      const form = document.getElementById('contactForm'); 
+      const msg = document.getElementById('formMsg'); 
+      form.addEventListener('submit', e=>{ 
+        e.preventDefault(); 
+        const name = document.getElementById('name').value.trim(); 
+        const email = document.getElementById('email').value.trim(); 
+        const message = document.getElementById('message').value.trim(); 
+        if(!name||!email||!message){ 
+          msg.textContent='Please fill all fields.'; return; 
+        } 
+        // basic email check 
+        if(!/^\S+@\S+\.\S+$/.test(email)){ msg.textContent='Valid email required.'; 
+return; } 
+        msg.textContent = 'Sending...'; 
+        // simulate network delay then success 
+        setTimeout(()=>{ msg.textContent = 'Message ready — paste this into your 
+email client: ' + encodeURIComponent(`From: ${name} <${email}>\n\n${message}`); 
+},700); 
+      }); 
+ 
+      window.resetForm = ()=>{ form.reset(); msg.textContent='Form cleared.' } 
+ 
+      window.openDemo = (url)=>{ window.open(url,'_blank') } 
+ 
+      document.getElementById('year').textContent = new Date().getFullYear(); 
+ 
+      // download cv stub: creates a small text file as CV example 
+      document.getElementById('downloadBtn').addEventListener('click', ()=>{ 
+        const cv = `Shivansh Namdev\nFrontend developer\nEmail: 
+tumhara@email.com\nSkills: HTML, CSS, JS, React`; 
+        const blob = new Blob([cv],{type:'text/plain'}); 
+        const a = document.createElement('a'); 
+        a.href = URL.createObjectURL(blob); 
+        a.download = 'CV-Tumhara-Naam.txt'; 
+        document.body.appendChild(a); a.click(); a.remove(); 
+      }); 
+ 
+      // smooth anchor scrolling for internal links 
+      document.querySelectorAll('a[href^="#"]').forEach(a=>{ 
+        a.addEventListener('click', e=>{ e.preventDefault(); const id = 
+a.getAttribute('href').slice(1); const el = document.getElementById(id); if(el) 
+el.scrollIntoView({behavior:'smooth'}); }); 
+      }); 
+ 
+      // small keyboard shortcut: press f to focus contact name 
+      document.addEventListener('keydown', e=>{ if(e.key==='f'){ 
+document.getElementById('name').focus(); } }); 
+ 
+      // project filter demo (very simple) 
+      const grid = document.getElementById('projectsGrid'); 
+      const filterApplied = document.getElementById('filterApplied'); 
+      // Example: you can call window.applyFilter('React') from console to filter 
+      window.applyFilter = (tag)=>{ 
+        const items = Array.from(grid.children); 
+        if(!tag || tag.toLowerCase()==='all'){ 
+          items.forEach(i=>i.style.display='block'); filterApplied.textContent = 'All'; return; 
+        } 
+        items.forEach(i=>{ 
+          const has = i.innerText.toLowerCase().includes(tag.toLowerCase()); 
+          i.style.display = has ? 'block' : 'none'; 
+        }); 
+        filterApplied.textContent = tag; 
+      } 
+ 
+    })(); 
+  </script> 
+</body> 
+</html> 
+
+ 
